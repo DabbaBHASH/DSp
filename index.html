@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSP Investment Services - Financial Planning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #0d6efd;
+            --accent: #ffcc00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #198754;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .company-name h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .company-name p {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+        
+        nav ul li a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 40px 0;
+            min-height: calc(100vh - 350px);
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .page-header h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .page-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .page-content h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .page-content p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .page-content ul, .page-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .page-content li {
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-card i {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-card h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .copyright {
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo-area {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .page-content {
+                padding: 25px;
+            }
+            
+            .page-header h2 {
+                font-size: 28px;
+            }
+        }
+        
+        /* Utility classes */
+        .hidden {
+            display: none;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background-color: #eee;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-area">
+                <div class="logo-placeholder">
+                    DSP<br>INVESTMENT<br>SERVICES
+                </div>
+                <div class="company-name">
+                    <h1>DSP INVESTMENT SERVICES</h1>
+                    <p>Financial Planning & Wealth Management</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+                    <li><a href="#" class="nav-link" data-page="terms">Terms & Conditions</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Home Page -->
+            <div id="home-page" class="page-content">
+                <div class="page-header">
+                    <h2>Welcome to DSP Investment Services</h2>
+                    <p>Your trusted partner for financial planning and wealth management</p>
+                </div>
+                
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h3>One of India's Largest Mutual Fund Distributors</h3>
+                    <p style="font-size: 18px; max-width: 800px; margin: 0 auto;">We provide comprehensive financial planning services to help you achieve your financial goals through disciplined investment strategies.</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>Contact Number</h4>
+                        <p><a href="tel:8668465192" style="color: var(--dark); text-decoration: none;">+91 8668465192</a></p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Address</h4>
+                        <p><a href="mailto:dineshsp1102@gmail.com" style="color: var(--dark); text-decoration: none;">dineshsp1102@gmail.com</a></p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Nature of Business</h4>
+                        <p>Financial Planning & Wealth Management</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="nav-link" data-page="about" style="display: inline-block; background: var(--secondary); color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600;">Learn More About Us</a>
+                </div>
+            </div>
+            
+            <!-- About Us Page -->
+            <div id="about-page" class="page-content hidden">
+                <div class="page-header">
+                    <h2>About DSP Investment Services</h2>
+                    <p>Your journey to financial well-being starts here</p>
+                </div>
+                
+                <h3>ONE OF INDIA'S LARGEST MUTUAL FUND DISTRIBUTORS</h3>
+                <p>Started in 2003, the NJ Wealth - Financial Products Distributors Network is one of India's largest network of distributors in the financial services industry with a wide presence spread across India. At NJ Wealth, we are working towards financial inclusion and investor participation in financial markets with the objective of improving their financial well-being. We aim to reach out to the common man and extend the opportunity to create wealth through an empowered network of financial product distributors – the NJ Wealth Partners.</p>
+                
+                <h3>OUR MISSION</h3>
+                <p>To the investors, NJ Wealth offers a comprehensive platform with a wide choice of products and solutions catering to their investment needs. With our flagship solution NJ E-Wealth Account, we strive to deliver an experience that is Simple, 100% Online and with hand-holding by dedicated mutual fund distributors.</p>
+                
+                <h3>OUR PARTNERS</h3>
+                <p>To the Partners, NJ Wealth offers a comprehensive business platform with end-to-end product-basket and solutions for building, growing and scaling financial products business to the next level. With its compelling set of offerings covering every area of distribution practice, NJ Wealth continues to transform the lives of many small and big distributors.</p>
+                
+                <h3>OUR LEGACY</h3>
+                <p>NJ Wealth draws inspiration from the rich legacy of NJ Group, established in 1994. We share the passion of the founders as we try to strengthen customer experience & improve our platform. 'Trust' is at the heart of what we do, putting our customer's interests first and working towards the success of our investors, distributors and other stakeholders.</p>
+                
+                <h3>OUR VISION</h3>
+                <p>We are strongly driven by the vision of <span class="highlight">'Be The Better Investor'</span>.</p>
+            </div>
+            
+            <!-- Privacy Policy Page -->
+            <div id="privacy-page" class="page-content hidden">
+                <div class="page-header">
+                    <h2>Privacy Policy</h2>
+                    <p>How we protect and use your information</p>
+                </div>
+                
+                <p>Last Updated: June 2023</p>
+                
+                <p>This Privacy Policy describes how DSP Investment Services ("we", "our", or "us") collects, uses, and shares your personal information when you use our services.</p>
+                
+                <h3>Information We Collect</h3>
+                <p>We may collect personal information that you provide directly to us, including:</p>
+                <ul>
+                    <li>Contact information (name, email address, phone number)</li>
+                    <li>Demographic information</li>
+                    <li>Financial information necessary for providing our services</li>
+                    <li>Identity verification documents as required by regulations</li>
+                </ul>
+                
+                <h3>How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Provide, maintain, and improve our services</li>
+                    <li>Process transactions and send related information</li>
+                    <li>Respond to your comments and questions</li>
+                    <li>Send you technical notices and support messages</li>
+                    <li>Communicate with you about products, services, and events</li>
+                    <li>Monitor and analyze trends and usage</li>
+                    <li>Comply with legal and regulatory requirements</li>
+                </ul>
+                
+                <h3>Information Sharing</h3>
+                <p>We do not sell, trade, or otherwise transfer your personal information to outside parties except:</p>
+                <ul>
+                    <li>With your consent</li>
+                    <li>To comply with legal obligations</li>
+                    <li>To protect and defend our rights and property</li>
+                    <li>With service providers who assist in our operations</li>
+                </ul>
+                
+                <h3>Data Security</h3>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <h3>Your Rights</h3>
+                <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                <ul>
+                    <li>Access to your personal information</li>
+                    <li>Correction of inaccurate information</li>
+                    <li>Deletion of your personal information</li>
+                    <li>Restriction of processing</li>
+                    <li>Data portability</li>
+                </ul>
+                
+                <h3>Contact Us</h3>
+                <p>If you have questions about this Privacy Policy, please contact us at:</p>
+                <p><strong>Email:</strong> dineshsp1102@gmail.com<br>
+                <strong>Phone:</strong> 8668465192</p>
+            </div>
+            
+            <!-- Terms & Conditions Page -->
+            <div id="terms-page" class="page-content hidden">
+                <div class="page-header">
+                    <h2>Terms & Conditions</h2>
+                    <p>Rules for using our services</p>
+                </div>
+                
+                <p>Last Updated: June 2023</p>
+                
+                <p>These Terms & Conditions govern your use of DSP Investment Services' website and services. By accessing our services, you agree to be bound by these Terms.</p>
+                
+                <h3>Services Offered</h3>
+                <p>DSP Investment Services provides financial planning and investment advisory services. We act as mutual fund distributors and financial product advisors. Our services are intended for individuals seeking professional financial guidance.</p>
+                
+                <h3>Eligibility</h3>
+                <p>To use our services, you must:</p>
+                <ul>
+                    <li>Be at least 18 years old</li>
+                    <li>Have the legal capacity to enter into contracts</li>
+                    <li>Reside in a jurisdiction where our services are available</li>
+                    <li>Provide accurate and complete information</li>
+                </ul>
+                
+                <h3>Investment Risks</h3>
+                <p>All investments involve risks, including the possible loss of principal. Past performance does not guarantee future results. The value of investments may fluctuate, and investors may not get back the amount invested.</p>
+                
+                <h3>Fees and Charges</h3>
+                <p>Our fees for services will be disclosed to you before you engage our services. We may receive commissions from product manufacturers for distribution of their products, which will be disclosed as required by regulations.</p>
+                
+                <h3>Intellectual Property</h3>
+                <p>All content on this website, including text, graphics, logos, and software, is the property of DSP Investment Services or its content suppliers and is protected by copyright and other intellectual property laws.</p>
+                
+                <h3>Limitation of Liability</h3>
+                <p>To the maximum extent permitted by law, DSP Investment Services shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use our services.</p>
+                
+                <h3>Governing Law</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in Mumbai.</p>
+                
+                <h3>Changes to Terms</h3>
+                <p>We reserve the right to modify these Terms at any time. We will provide notice of significant changes by posting the new Terms on our website.</p>
+                
+                <h3>Contact Information</h3>
+                <p>For questions about these Terms, please contact:</p>
+                <p><strong>DSP Investment Services</strong><br>
+                Email: dineshsp1102@gmail.com<br>
+                Phone: 8668465192</p>
+            </div>
+            
+            <!-- Contact Us Page -->
+            <div id="contact-page" class="page-content hidden">
+                <div class="page-header">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with our financial planning experts</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>Call Us</h4>
+                        <p>+91 8668465192</p>
+                        <p>Monday to Friday: 9:30 AM - 6:00 PM</p>
+                        <p>Saturday: 10:00 AM - 2:00 PM</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Us</h4>
+                        <p>dineshsp1102@gmail.com</p>
+                        <p>We typically respond within 24 hours on business days</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Business Information</h4>
+                        <p><strong>Company:</strong> DSP Investment Services</p>
+                        <p><strong>Nature of Business:</strong> Financial Planning</p>
+                        <p><strong>Services:</strong> Mutual Fund Distribution, Financial Advisory, Wealth Management</p>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <h3>Schedule a Consultation</h3>
+                    <p>Interested in our financial planning services? Contact us to schedule a personalized consultation with one of our financial experts.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <p><strong>Email:</strong> dineshsp1102@gmail.com</p>
+                        <p><strong>Phone:</strong> 8668465192</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DSP Investment Services</h3>
+                    <p>Your trusted partner for comprehensive financial planning and wealth management solutions.</p>
+                    <p style="margin-top: 15px;"><i class="fas fa-briefcase"></i> Financial Planning & Wealth Management</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                        <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+                        <li><a href="#" class="nav-link" data-page="terms">Terms & Conditions</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone-alt"></i> 8668465192</p>
+                    <p><i class="fas fa-envelope"></i> dineshsp1102@gmail.com</p>
+                    <p style="margin-top: 20px;">One of India's largest mutual fund distributors network</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2023 DSP Investment Services. All Rights Reserved.
+                </div>
+                <div>
+                    <p>Inspired by the legacy of NJ Group | Vision: 'Be The Better Investor'</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('[id$="-page"]');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.add('hidden');
+                });
+                
+                // Show the selected page
+                const selectedPage = document.getElementById(pageId);
+                if (selectedPage) {
+                    selectedPage.classList.remove('hidden');
+                }
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId.replace('-page', '')) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                navMenu.classList.remove('show');
+            }
+            
+            // Add click event to all navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    showPage(pageId);
+                    
+                    // Scroll to top of page
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Show home page by default
+            showPage('home-page');
+        });
+    </script>
+</body>
+</html>
